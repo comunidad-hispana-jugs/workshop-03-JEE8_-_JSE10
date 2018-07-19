@@ -31,3 +31,12 @@ Víctor Orozco (@tuxtor (https://twitter.com/tuxtor)): Víctor Orozco cuenta con
 "De día" el trabaja como trainer y consultor Java en Nabenik, con clientes de los sectores financieros, banca y gubernamental, asi mismo es vicepresidente de la comisión de informática del sistema nacional de ciencia y tecnología de Guatemala.
 
 Hillmer Chona (@hillmerch (https://twitter.com/HillmerCh)) es Ingeniero de Sistemas, Líder de Medellin JUG, miembro asociado de Java Community Process JCP, Ganador del premio Duke’s Choice Award en el año 2017, Speaker de eventos de tecnología como Oracle Developer tour, Java One, y arquitecto de software enfocado en Java Enterprise.
+
+
+* Canal de slack para comunicacion durante el HackDay
+
+https://join.slack.com/t/comunidad-jugs/shared_invite/enQtNDAyNzEzNTUzNTEwLWIyN2I2N2U2NWNjMDkxMWI3Njk1NDJkZTU2NDU1MDBlYWNmNzRhNTRiMWJkZGYxNWU1ZTEzMTQ2NDUyZjVmYWQ
+
+* Canal de youtube 
+
+https://www.youtube.com/watch?v=-LWM-xr6LP0
