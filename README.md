@@ -40,3 +40,14 @@ https://join.slack.com/t/comunidad-jugs/shared_invite/enQtNDAyNzEzNTUzNTEwLWIyN2
 * Canal de youtube 
 
 https://www.youtube.com/watch?v=-LWM-xr6LP0
+
+
+
+#### Ejercicios JDK 10
+
+[JDK_10/README.md](JDK_10/README.md) 
+
+
+#### Ejercicios Java EE 8
+
+[JEE_8/README.md](JEE_8/README.md) 
