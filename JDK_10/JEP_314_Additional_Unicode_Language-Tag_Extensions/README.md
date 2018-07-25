@@ -12,7 +12,7 @@ Java SE 9 soporta BCP 47 U language-tag extensions para `calendars (ca)` y `numb
 Este ejemplo muestra como estas extensiones pueden ser usadas para combinar y crear entornos locales mucho más específicas. Este ejemplo esta diseñado para ser trabajado en JShell, pero si lo desea puede intentar hacerlo en un una clase de Java
 
 
-Usted puede jecutar este ejemplo en su Local JShell o en linea. para mas información sobre JShell puede ir a:
+Usted puede ejecutar este ejemplo en su Local JShell o en linea. para mas información sobre JShell puede ir a:
 
 https://github.com/AdoptOpenJDK/jdk9-jigsaw/tree/master/session-3-jshell
 
@@ -61,7 +61,8 @@ cree una nueva Configuración regional (Locale), ejecute las mismas instruccione
 
 4. Finalmente vamos a usar el soporte de extensión agregado en Java 10, esta vez debe crear su configuración regional usando un `Local.Builder` como se muestra a continuación.
   Reemplace las letras xx y YY para el idioma / país que usó en el primer ejercicio, y luego ejecute las declaraciones del paso número 2.
- ** Nota: ** Si está realizando pruebas con Francia, debe cambiar las letras FR en `FRzzzz` para otro país, por ejm. `UKzzzz`,` COzzzz`, `BRzzzz`
+
+**Nota:** Si está realizando pruebas con Francia, debe cambiar las letras FR en `FRzzzz` para otro país, por ejm. `UKzzzz`,` COzzzz`, `BRzzzz`
 
 		Locale myLocale  = new Locale.Builder().setLanguage("xx").setRegion("YY") .setExtension('u',"rg-FRzzzz").build();
 
