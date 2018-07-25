@@ -1,33 +1,34 @@
-**JShell: Local Variable Type Inference for all Types example**
+**JShell: Inferencia de tipo de variable local para ejemplos de todos los tipos**
 
-This example covers the use of `Type Inference` in JShell to declare variables using them in Expressions, Statements, and Blocks as Loops.
+Este ejemplo cubre el uso de `Type Inference` en JShell para declarar variables que las usan en expresiones, declaraciones y bloques como bucles.
 
-You can run this example on your local JShell or online. For more information about JShell you can go to:  https://github.com/AdoptOpenJDK/jdk9-jigsaw/tree/master/session-3-jshell
+Puede ejecutar este ejemplo en tu JShell o en linea. Para más información sobre JShell puede ir a:
+https://github.com/AdoptOpenJDK/jdk9-jigsaw/tree/master/session-3-jshell
 
-To execute Local JShell run next command
+para ejecutar JShell Local ejecute el siguiente comando:
 
      jshell
-     
-Verify you are using JShell for Java 10 version
+
+Verifique que está utilizando la versión de JShell para Java 10:
 
     |  Welcome to JShell -- Version 10
     |  For an introduction type: /help intro
 
 
-To execute JShell online go to next URL
+Para ejecutar JShell en linea ir a la siguiente URL
 
     https://tryjshell.org
     
-Verify you are using JShell for Java 10 version
+Verifique que está utilizando la versión de JShell para Java 10:
 
     |  Welcome to JShell -- Version 10
     |  For an introduction type: /help intro
     
     
-Once you are on JShell, try to do next exercises using Variable Type Inference
+Una vez que esté en JShell, intente hacer los próximos ejercicios utilizando la Inferencia de Tipo Variable
 
-- Make a sum of two number of the type int, and print the result
-- Declare text using String, StringBuilder, StringBuffer
-- Declare collections as List, ArrayList, Set, Map
+- Haga una suma de dos números del tipo int, e imprima el resultado
+- Declarar texto usando String, StringBuilder, StringBuffer
+- Declarar colecciones como List, ArrayList, Set, Map
 
-For Object type you can use the method getClass() to check the type that the compiler used.
+Para Tipo de objeto, puede usar el método getClass() para verificar el tipo que utilizó el compilador.
