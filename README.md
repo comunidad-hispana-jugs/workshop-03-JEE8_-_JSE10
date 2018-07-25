@@ -18,7 +18,7 @@ JDK 10 General-Availability Release, descargue según su sistema operativo http:
 
 Introducción a Java EE/Jakarta EE 8 con Payara 5:
 Java 8 (HotSpot/OpenJDK) - http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-Payara Server Full 5.182 [https://www.payara.fish/downloads](https://www.payara.fish/downloads](https://www.payara.fish/downloads)
+Payara Server Full 5.182 https://www.payara.fish/downloads
 Netbeans 8.2 Java EE https://netbeans.org/downloads/
 Netbeans Plugin Payara http://plugins.netbeans.org/plugin/72263/payara-server-micro
 
