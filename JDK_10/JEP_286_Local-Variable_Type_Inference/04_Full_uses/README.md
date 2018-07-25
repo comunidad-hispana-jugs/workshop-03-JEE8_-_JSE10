@@ -24,9 +24,7 @@ Una vez que haya reemplazado toda la declaración de tipos de datos, ejecute el 
 
     $ javac -d target src/com/typeinference/Java10var.java 
 
-** Note:** The `Java10var` class has some variable declarations with Variable Type Inference that can not be used.
-Open the file `com/typeinference/Java10var.java` identify the uses of Variable Type Inference that are not allowed and change them for the original declaration.
-**Note:** La clase `Java10var` tiene algunas declaraciones con Inferencia de tipo de variable que no puede ser usado.
+**Nota:** La clase `Java10var` tiene algunas declaraciones con Inferencia de tipo de variable que no puede ser usado.
 Abra el archivo `com/typeinference/Java10var.java` para identificar el uso de inferencia de tipo de variable que no están permitidos y cambielos para la declaración original. 
 
 Una vez que el ejemplo compila, ejecútelo con el siguiente comando:
