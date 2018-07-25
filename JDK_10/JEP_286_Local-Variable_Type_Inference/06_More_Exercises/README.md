@@ -1,6 +1,7 @@
 ### JEP 286: Local-Variable Type Inference
+### JEP 286: Inferenica de tipo de variable local 
 
-Run the below command on any of the below `java` source files in the current directory: 
+Ejecute el siguiente comando en cualquiera de los siguientes archivos fuente `java` en el directorio actual:
 
 ```bash
 javac AnonymousInnerClass.java
@@ -16,6 +17,6 @@ javac WithInterface.java
 javac WithStreams.java
 ```
 
-What output will compiler produce:
+Qué salida producirá el compilador:
 
-Follow the annotations in the respective source files to see what is happening per line. The compiler returns error messages per line that won't compile.
+Siga las anotaciones en los respectivos archivos de origen para ver qué sucede por línea. El compilador devuelve mensajes de error por línea que no se compilará.
