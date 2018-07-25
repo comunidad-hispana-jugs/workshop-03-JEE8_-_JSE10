@@ -18,4 +18,4 @@ Ahora, abra el archivo `com/typeinference/PrimitiveTypes.java` y reemplace todos
 
     int id --> var id
 
-Unna vez que haya reemplazado toda la declaración de tipos de datos primitivos, ejecute el comando para compilar y ejecutar. Por favor compare las salidas, ¿son lo mismo?
+Una vez que haya reemplazado toda la declaración de tipos de datos primitivos, ejecute el comando para compilar y ejecutar. Por favor compare las salidas, ¿son lo mismo?
