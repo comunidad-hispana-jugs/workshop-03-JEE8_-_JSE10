@@ -27,8 +27,12 @@
        -  `set JAVA_HOME=[jdk destination]`
 
            `[destination]` usualmente es `.../jdk-10.jdk/Contents/Home/`  
+       
+       -  `set PATH=%JAVA_HOME%\bin`
+
+           `Estás dos configuraciones se guardarán tempralmente en la consola o terminal. `
              
-       - Edite `JAVA_HOME` y `PATH` en las variables de entorno a través de `My Computer` > `Properties` 
+       - Si el paso anterior no le funciono, edite `JAVA_HOME` y `PATH` en las variables de entorno a través de `My Computer` > `Properties` 
          - `JAVA_HOME`: `JAVA_HOME=[jdk destination]`
          - `PATH`: `PATH=%JAVA_HOME%/bin;%PATH%`
          
