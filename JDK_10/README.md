@@ -7,9 +7,7 @@ ___
 ####   Por favor note que usted esta en el `master` branch el cual contiene los ejercicios que necesitan ser resueltos a partir de la documentación o recursos provistos en este repositorio. Recuerde que puede usar el `exercise-solutions` branch para orientarse o para ver una de las soluciones recomendadas.
 
 
-[Cambiar al exercise-solutions branch](blob/exercise-solutions/JDK_10/README.md)
-
-___
+[Cambiar al exercise-solutions branch](../../exercise-solutions/JDK_10/README.md)
 
 ## Configuración (Windows, Linux, MacOSX)
 
