@@ -16,6 +16,8 @@ El tutorial esta dividido en 5 secciónes:
 4. Implementación de nuevas caracteristicas en Java EE 8
 5. Extensiones populares en Java EE 8 -e.g. DeltaSpike, Eclipse MicroProfile-
 
+Como referencia se ha creado un repositorio de demostración con cada uno de los pasos delimitados mediante commits de Git en [https://github.com/tuxtor/jmovies](https://github.com/tuxtor/jmovies)
+
 ## Configuración e instalación de un entorno de desarrollo Java EE 8
 
 TODO
@@ -24,7 +26,7 @@ TODO
 
 Para la siguiente demostración crearemos una aplicación web utilizando Netbeans IDE 8.2 de acuerdo al siguiente esquema:
 
-El objetivo de la aplicación es la elaboración de un backend para aplicaciones SPA (para fines demostrativos el siguiente repositorio contiene una aplicación en AngularJS: ), con la cual podremos crear un listado de peliculas favoritas, para agregar, modificar y eliminar peliculas (CRUD).
+El objetivo de la aplicación es la elaboración de un backend para aplicaciones SPA (para fines demostrativos el [siguiente repositorio contiene una aplicación en AngularJS](https://github.com/tuxtor/jmovies-spa)), con la cual podremos crear un listado de peliculas favoritas, para agregar, modificar y eliminar peliculas (CRUD).
 
 ### Creando el proyecto
 
