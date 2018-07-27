@@ -1,23 +1,21 @@
-**Local Variable Type Inference for Primitive Data Types example**
+**Inferencia de Tipo de Variable local para ejemplos de tipos de datos primitivos**
 
-This first example is a class named `PrimitiveTypes` whose methods should use 
-`Type Inference` to declare variables using them in Expressions, Statements, and Blocks as Loops.
+El primer ejemplo es una clase llamada `PrimitiveTypes` cuyos métodos deberían usar `Type Inference` para declarar variables usandolo en expresiones, decaraciones y bloques como bucles.
 
-Perform the below commands to see the contents of the respective Java classes contained in the src folder:
+Realice los siguientes comandos para ver los contenidos de las respectivas clases de Java que están en la carpeta src:
 
     $ cat src/com/typeinference/PrimitiveTypes.java
 
-Compile the example with the following command:
+Compile el ejemplo con el siguiente comando:
 
     $ javac -d target src/com/typeinference/PrimitiveTypes.java 
 
-And we run the example with the following command:
+Y ejecutamos el ejemplo con el siguiente comando:
 
     $ java -cp target com/typeinference/PrimitiveTypes
-    
-Now, open the file `com/typeinference/PrimitiveTypes.java` and replace all primitive data types declaration with
-the new keyword `var`, this change allows you to use Variable Type Inference.
+
+Ahora, abra el archivo `com/typeinference/PrimitiveTypes.java` y reemplace todos las declaraciones de datos primitivos con la nueva palabra llave `var`, este cambio le permite usar la Inferencia de Tipo de Variable.
 
     int id --> var id
 
-Once you have replaced all primitive data types declaration, execute the commands for compile and run. Please compare the outputs, are they the same? 
+Una vez que haya reemplazado toda la declaración de tipos de datos primitivos, ejecute el comando para compilar y ejecutar. Por favor compare las salidas, ¿son lo mismo?

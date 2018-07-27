@@ -1,23 +1,22 @@
 **Local Variable Type Inference for Arrays Data Types example**
+**Inferencia de Tipo de Variable local para ejemplos de tipo de datos arrays**
 
-This example is a class named `ArraysTypes` whose methods should use 
-`Type Inference` to declare variables using them in Expressions, Statements, and Blocks as Loops.
+Este ejemplo es una clase llamada `ArraysTypes` cuyos métodos deberían usar `Type Inference` para declarar variables usandolo en expresiones, decaraciones y bloques como bucles.
 
-Perform the below commands to see the contents of the respective Java classes contained in the src folder:
+Realice los siguientes comandos para ver los contenidos de las respectivas clases de Java que están en la carpeta src:
 
     $ cat src/com/typeinference/ArraysTypes.java
 
-Compile the example with the following command:
+Compile el ejemplo con el siguiente comando:
 
     $ javac -d target src/com/typeinference/*
 
-And we run the example with the following command:
+Y ejecutamos el ejemplo con el siguiente comando:
 
     $ java -cp target com/typeinference/ArraysTypes
     
-Now, open the file `com/typeinference/ArraysTypes.java` and replace all array data types declaration with
-the new keyword `var`, this change allows you to use Variable Type Inference.
+Ahora, abra el archivo c`com/typeinference/ArraysTypes.java` y reemplace todos las declaraciones de datos primitivos con la nueva palabra llave `var`, este cambio le permite usar la Inferencia de Tipo de Variable.
 
     int[] myArray --> var myArray
 
-Once you have replaced all array data types declaration, execute the commands for compile and run. 
+Una vez que haya reemplazado toda la declaración de tipos de datos array, ejecute el comando para compilar y ejecutar. 

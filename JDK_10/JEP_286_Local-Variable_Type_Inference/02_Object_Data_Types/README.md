@@ -1,27 +1,26 @@
-**Local Variable Type Inference for Object Data Types example**
+**Inferencia de tipo de variable local para ejemplos de tipos de datos de objetos**
 
-This example is a class named `ObjectTypes` whose methods should use 
-`Type Inference` to declare variables using them in Expressions, Statements, and Blocks as Loops.
+Este ejemplo es una clase llamada `ObjectTypes` cuyos métodos deberían usar
+`Type Inference` para declarar variables que los usan en expresiones, declaraciones y bloques como bucles.
 
-Perform the below commands to see the contents of the respective Java classes contained in the src folder:
+
+Realice los siguientes comandos para ver los contenidos de las respectivas clases de llama que están en la carpeta src:
 
     $ cat src/com/typeinference/ObjectTypes.java
 
-Compile the example with the following command:
+Compile los ejemplos con los siguientes comandos:
 
     $ javac -d target src/com/typeinference/*
 
-And we run the example with the following command:
+Y ejecutamos el ejemplo con el siguiente comando:
 
     $ java -cp target com/typeinference/ObjectTypes
     
-Now, open the file `com/typeinference/ObjectTypes.java` and replace all object data types declaration with
-the new keyword `var`, this change allows you to use Variable Type Inference.
+Ahora, abra el archivo `com/typeinference/ObjectTypes.java` y reemplace todos las declaraciones de datos de objetos con la nueva palabra llave `var`, este cambio le permite usar la Inferencia de Tipo de Variable.
 
     String id --> var id
     Book theLordOfTheRings --> var theLordOfTheRings
+ 
+**Nota:** La clase `ObjectTypes.java` usa objetos definidos por el usuario `(Book, Store)` y por el JDK `(String, Integer, List )` 
 
-**Note:** The class `ObjectTypes.java` class uses objecs defined by the user `(Book, Store)` and by the JDK `(String, Integer, List )`  
-
-Once you have replaced all object data types declaration, execute the commands for compile and run. Please compare the outputs, are they the same? 
-Are the types an instance of some object?
+Una vez que haya reemplazado toda la declaración de tipos de datos de objetos, ejecute el comando para compilar y ejecutar. Por favor compare las salidas, ¿son lo mismo?

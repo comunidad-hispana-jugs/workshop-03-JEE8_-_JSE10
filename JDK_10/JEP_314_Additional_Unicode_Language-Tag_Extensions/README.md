@@ -1,7 +1,7 @@
 **JEP 314: Additional Unicode Language-Tag Extensions example**
 
 
-Java SE 9 support BCP 47 U language-tag extensions to `calendars (ca)` and `numbers (nu)`. Java 10 add support for the additional extensions:
+Java SE 9 soporta BCP 47 U language-tag extensions para `calendars (ca)` y `numbers (nu)`. Java 10 adiciona soporte para las extensiones adicionales:
 
 	cu (currency type)
 	fw (first day of week)
@@ -9,62 +9,64 @@ Java SE 9 support BCP 47 U language-tag extensions to `calendars (ca)` and `numb
 	tz (time zone)
 
 
-This example show how those extensions can be used to combine or create much more specific Locales. This example is design to be work on JShell, but if you want you can try to make it on a Java Class.
+Este ejemplo muestra como estas extensiones pueden ser usadas para combinar y crear entornos locales mucho más específicas. Este ejemplo esta diseñado para ser trabajado en JShell, pero si lo desea puede intentar hacerlo en un una clase de Java
 
 
-You can run this example on your local JShell or online. For more information about JShell you can go to:  https://github.com/AdoptOpenJDK/jdk9-jigsaw/tree/master/session-3-jshell
+Usted puede ejecutar este ejemplo en su Local JShell o en linea. para mas información sobre JShell puede ir a:
 
-To execute Local JShell run next command
+https://github.com/AdoptOpenJDK/jdk9-jigsaw/tree/master/session-3-jshell
+
+Para ejecutar Local JShell ejecute el siguiente comando
 
      jshell
      
-Verify you are using JShell for Java 10 version
+Verifique que está utilizando la versión de JShell para Java 10:
 
     |  Welcome to JShell -- Version 10
     |  For an introduction type: /help intro
 
 
-To execute JShell online go to next URL
+Para ejecutar JShell en linea ir a la siguiente URL
 
     https://tryjshell.org
     
-Verify you are using JShell for Java 10 version
+Verifique que está utilizando la versión de JShell para Java 10:
 
     |  Welcome to JShell -- Version 10
     |  For an introduction type: /help intro
     
     
-Once you are on JShell, try to do next exercises. 
+Una vez que esté en JShell, intente hacer los siguientes ejercicios
 
 
 
-1. Create a Locale for your country using the two parameters constructor
+1. Crear una configuración regional (Locale) para su país utilizando el constructor de dos parámetros
 	
-	 Locale myLocale = new Locale("es","CO"); // `es` is for the language Spanish and `CO` for the country Colombia
+	 Locale myLocale = new Locale("es","CO"); // `es` es para el idioma español y `CO` para el país Colombia
 	 
-	 Next link is useful to know the values for each country https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+	 El siguiente enlace es útil para conocer los valores de cada país https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 	 
-2. Run next statements and take note of the results
+2. Ejecute las siguientes declaraciones y tome nota de los resultados
 
-		System.out.println(Currency.getInstance(myLocale)); // it shows your country's currency
+		System.out.println(Currency.getInstance(myLocale)); // muesttra la moneda de su país
 	 
-		System.out.println(Calendar.getInstance(myLocale).getFirstDayOfWeek()); // it shows your country's first Day of the week: 1 for Sunday, 2 for Monday, 3 for Wednesday and so on.   
+		System.out.println(Calendar.getInstance(myLocale).getFirstDayOfWeek()); // muestra el primer día de la semana de su país: 1 para el domingo, 2 para el lunes, 3 para el miércoles y así sucesivamente.
 
-		System.out.println(NumberFormat.getInstance(myLocale).format(123456789)); // it shows your country's number format style
+		System.out.println(NumberFormat.getInstance(myLocale).format(123456789)); // muestra el estilo de formato numérico de su país
 	
-		System.out.println(DateFormat.getDateInstance(1,myLocale).format(new Date())); // it shows your country's date
+		System.out.println(DateFormat.getDateInstance(1,myLocale).format(new Date())); // muestra la fecha de su país
 	
-3. Now, work in pairs, each one choose a different language/country, it is much better if the countries are in different continents, 
-create a new Locale, execute the same statements of previous step and compare the result.
+3. Ahora, trabaje en pareja, cada uno elija un idioma/país diferente, es mucho mejor si los países están en diferentes continentes,
+cree una nueva Configuración regional (Locale), ejecute las mismas instrucciones del paso anterior y compare el resultado.
 
-4. Finally we are going to use the extension support added on Java 10, this time you must create your Locale using a `Local.Builder` as it shows next. 
-  Replace the letters xx and YY for the Language / Country that you used in the first exercise, and then execute the statements of the step number 2. 
-  **Note:** If you are testing with France you must change the FR letters on `FRzzzz` for other country, e.g. `UKzzzz`, `COzzzz`, `BRzzzz` 
+4. Finalmente vamos a usar el soporte de extensión agregado en Java 10, esta vez debe crear su configuración regional usando un `Local.Builder` como se muestra a continuación.
+  Reemplace las letras xx y YY para el idioma / país que usó en el primer ejercicio, y luego ejecute las declaraciones del paso número 2.
+
+**Nota:** Si está realizando pruebas con Francia, debe cambiar las letras FR en `FRzzzz` para otro país, por ejm. `UKzzzz`,` COzzzz`, `BRzzzz`
 
 		Locale myLocale  = new Locale.Builder().setLanguage("xx").setRegion("YY") .setExtension('u',"rg-FRzzzz").build();
 
-5. The final challenge is to define un Locale for your country, that uses a different language, with Friday as the first
- day of the week, USD as currency and uses Javanese digits. You should use the statements in the step number two to test your Locale.
- You can use next commando to verify the Locale tha you have created:
+5. El desafío final es definir un Configuración regional (Locale) para su país, que use un idioma diferente, con "Viernes" como el primer día de la semana, USD como moneda y usa dígitos javaneses. Debe usar las declaraciones en el paso número dos para probar su configuración regional.
+  Puede usar el siguiente comando para verificar la configuración regional que ha creado:
  
 		System.out.println(myLocale.getDisplayName());
