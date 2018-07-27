@@ -5,29 +5,29 @@ import java.util.Random;
 public class ArraysTypes {
 
 	public static void main(String[] args) {
-		String[] animalss = new String[3];
+		var animalss = new String[3]; // String[] animalss --> You can use Local-Variable type inference here
 
 		animalss[0] = "DOG";
 		animalss[1] = "CAT";
 		animalss[2] = "MOUSE";
 
-		for ( String animal : animalss ) {
+		for ( var animal : animalss ) { // String animal  --> You can use Local-Variable type inference here
 			System.out.println( animal );
 		}
 
-		String[][] names = new String[][] {
+		var names = new String[][] { // String[][] names  --> You can use Local-Variable type inference here
 				{ "Mr. ", "Mrs. ", "Ms. " },
 				{ "Bean", "Krabappel" }
 		};
 		// Mr. Bean
-		String mrBean = names[0][0] + names[1][0];
+		var mrBean = names[0][0] + names[1][0]; // String mrBean --> You can use Local-Variable type inference here
 		System.out.println( mrBean );
 
 		// Ms.
-		String msKrabappel = names[0][2] + names[1][1];
+		var msKrabappel = names[0][2] + names[1][1]; // String msKrabappel --> You can use Local-Variable type inference here
 		System.out.println( names[0][2] + names[1][1] );
 
-		Hero[] heroes = new Hero[]{
+		var heroes = new Hero[]{ // Hero[] heroes --> You can use Local-Variable type inference to this declaration
 				new Hero( "Spiderman" ),
 				new Hero( "Batman" ),
 				new Hero( "American Captain" ),
@@ -40,8 +40,8 @@ public class ArraysTypes {
 				new Hero( "Duke" ),
 		};
 
-		Random rand = new Random(  );
-		Hero bestHero = heroes[rand.nextInt( 9 )];
+		var rand = new Random(  ); // Random rand --> You can use Local-Variable type inference here
+		var bestHero = heroes[rand.nextInt( 9 )]; // Hero bestHero --> You can use Local-Variable type inference here
 
 		System.out.println("and the best hero is ... ");
 		System.out.println(bestHero.getName() );

@@ -4,8 +4,8 @@ public class PrimitiveTypes {
 
 	public static void main(String[] args) {
 
-		int years = 37; // this primitive var declaration should be changed
-		char gender = 'M'; // this primitive var declaration should be changed
+		var years = 37; // int years = 37; You can use Local-Variable type inference here
+		var gender = 'M'; // var gender = 'M'; You can use Local-Variable type inference here
 
 		if ( gender == 'M' ) {
 			System.out.println( "Hi Mister, you're " + years + " old " );
@@ -17,16 +17,19 @@ public class PrimitiveTypes {
 			System.out.println( "Hi, you're " + years + " old " );
 		}
 
-		double totalPayment = 6200; // this primitive var declaration should be changed, it might be necessary to make a little change
-		int days = 85; // this primitive var declaration should be changed
+		var totalPayment = 6200.0; 	// double totalPayment = 6200; You can use Local-Variable type inference here,
+									// but it is necessary to add the decimal '.0'
 
-		double value = totalPayment / days;  // this primitive var declaration should be changed
+		var days = 85; // int days = 85; You can use Local-Variable type inference here d
+
+		double value = totalPayment / days;  // double value = totalPayment / days; You can use Local-Variable type inference here
 
 		System.out.println( "Last month you earned $ " + value + " per day " );
 
-		for ( int i = 0; i < 10; i++ ) {
+		// You can use Local-Variable type inference here to declare a for variable and and boolean-type
+		for ( var i = 0; i < 10; i++ ) {
 
-			boolean isEven = i % 2 == 0;
+			var isEven = i % 2 == 0;
 
 			if ( isEven ) {
 				System.out.println( i + " is an even number " );

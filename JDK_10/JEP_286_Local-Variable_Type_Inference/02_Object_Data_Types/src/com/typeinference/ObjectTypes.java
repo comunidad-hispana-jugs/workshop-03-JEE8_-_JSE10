@@ -7,8 +7,8 @@ public class ObjectTypes {
 
 	public static void main(String[] args) {
 
-		Integer years = 37; // this object var declaration should be changed
-		String gender = "FEMALE"; // this object var declaration should be changed
+		var years = 37; // Integer years --> You can use Local-Variable type inference here
+		var gender = "FEMALE"; // String gender --> You can use Local-Variable type inference heren
 
 		if ( gender.equals( "MALE" ) ) {
 			System.out.println( "Hi Mister, you're " + years + " old " );
@@ -20,20 +20,27 @@ public class ObjectTypes {
 			System.out.println( "Hi, you're " + years + " old " );
 		}
 
-		Double totalPayment = 6200D; // this object var declaration should be changed, it might be necessary to make a little change
-		Long days = 85L; // this object var declaration should be changed, it might be necessary a little trick
+		Double totalPayment = 6200D; // Double totalPayment --> You can use Local-Variable type inference heren
+		// but the type inferred will be a double primitive, as we are going to call the method totalPayment.getClass()
+		// you can change Long for var
+		Long days = 85L; // Long days --> You may use Local-Variable type inference heren
+		// but the type inferred will be a double primitive, as we are going to call the method days.getClass()
+		// you can change Long for var
 
-		Double value = totalPayment / days;  // this object var declaration should be changed
+		Double value = totalPayment / days;  	// Double value --> You may use Local-Variable type inference heren
+		// but the type inferred will be a double primitive
 
 		System.out.println( "Last month you earned $ " + value + " per day " );
 
-		Book theLordOfTheRings = new Book("The Lord Of The Rings", 19.99);
-		Store centralPark = new Store( "Central Park");
+		var theLordOfTheRings = new Book("The Lord Of The Rings", 19.99); // Book theLordOfTheRings --> You can use Local-Variable type inference heren
+		var centralPark = new Store( "Central Park"); // Store centralPark --> You can use Local-Variable type inference heren
 
 		System.out.println( "Your favorite book " + theLordOfTheRings + ", is available in our store " + centralPark.getName() );
 
 
-		List<String> animalss = Arrays.asList( "DOG", "CAT", "MOUSE");
+		var animalss = Arrays.asList( "DOG", "CAT", "MOUSE");   // List<String> animalss --> You can use Local-Variable type inference to this declaration
+		// but you can not say List<var> animalss
+
 		System.out.println(animalss);
 
 		//Checking objects' class

@@ -4,10 +4,11 @@ Los siguientes ejercicios están basados en algunas de las novedades de Java 10 
 
 ___
 
-####   Por favor note que usted esta en el `master` branch el cual contiene los ejercicios que necesitan ser resueltos a partir de la documentación o recursos provistos en este repositorio. Recuerde que puede usar el `exercise-solutions` branch para orientarse o para ver una de las soluciones recomendadas.
+####   Por favor note que usted esta en el `exercise-solutions` branch el cual contiene la solución de los ejercicios este branch esta pensado para los principiantes o para ayudar en el momento de un bloqueo en la solución de los ejericios del `master` branch. 
 
+####   Ver la solución disminuye la diversión y el reto de tratar de llegar a una solución . 
 
-[Cambiar al exercise-solutions branch](blob/exercise-solutions/JDK_10/README.md)
+[Volver al master (exercises) branch](blob/master/java10/README.md)
 
 ___
 
