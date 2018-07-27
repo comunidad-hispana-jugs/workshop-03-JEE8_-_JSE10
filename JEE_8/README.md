@@ -487,7 +487,7 @@ public void findWithActors(@PathParam("id") final Long id, @Suspended AsyncRespo
 
 La respuesta debera ser transparente al usuario, dependiendo de la velocidad de la conexión se observara que la respuesta sera generada solo al completar la petición hacia OMDB, "reaccionando" a este evento y parchando el JSON original con la nueva información.
 
-![jaxrs](img/jaxrs.png)
+![jaxrs1](img/jaxrs1.png)
 
 ### CDI 2.0 (Async events)
 
