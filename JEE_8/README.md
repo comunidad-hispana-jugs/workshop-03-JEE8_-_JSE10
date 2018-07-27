@@ -128,7 +128,7 @@ public class Movie implements Serializable {
     //Getters y setters . . .
 ```
 
-Como referencia puede visualizar el estado del proyecto en el commit `c0caddc`.
+Como referencia visualizar el estado del proyecto en el commit `c0caddc`.
 
 #### Creando un Data Access Object/Repositorio de datos
 
@@ -178,7 +178,7 @@ public class MovieDao {
 }
 ```
 
-Como referencia pueden visualizar el estado del proyecto en el commit `d1a2428`.
+Como referencia visualizar el estado del proyecto en el commit `d1a2428`.
 
 #### Creando un API REST
 
@@ -247,7 +247,7 @@ public class MovieEndpoint {
 }
 ```
 
-Como referencia pueden visualizar el estado del proyecto en el commit `e61cba9`.
+Como referencia visualizar el estado del proyecto en el commit `e61cba9`.
 
 ### Probando nuestra aplicación con Java EE 7
 
@@ -326,7 +326,30 @@ Listo, ya estamos en JavaEE 8, ¿Esperaban más? :). Commit de referencia `c01ba
 
 ### JSON-B
 
+JSON-B es una nueva API para la personalización del proceso de Marshalling/Unmarshalling, denominada informalmente como JAX-B para el mundo JSON. La nueva API define anotaciones que anteriormente solo existitian en las implementaciones (Jackson, Gson), para controlar la creación de propiedades y documentos JSON, asi como una simplifiación con la interacción con JSON-P (Processig) y JAX-RS.
 
+Como primera prueba modificaremos ligeramente nuestra entidad `Movie` para agregar una nueva propiedad, denominada `precioVenta` y utilizaremos las anotaciones `@JsonbProperty` y `@JsonbNumberFormat` para modificar declarativamente el Marshalling/Unmarshalling
+
+```java
+@Column
+@NotNull
+@JsonbProperty("nombre-pelicula")
+private String nombre;
+
+@Column
+@Size(max = 2000)
+private String descripcion;
+
+@Column
+private String imdb;
+
+@Column
+@JsonbProperty("precio-publico")
+@JsonbNumberFormat("#0.00")
+private Double precioVenta;
+```
+
+Al desplegar podemos realizar nuevamente la prueba de persitencia con la siguiente muestra, notese que se incluye la nueva propiedad y la propiedad `nombre` fue alterada mediante JSON-B
 
 ```json
 {
@@ -337,8 +360,205 @@ Listo, ya estamos en JavaEE 8, ¿Esperaban más? :). Commit de referencia `c01ba
 }
 ```
 
-### JAX-RS Reactivo
-### JSON-P Patch
-### Servlet push
-### Security
+![jsonb1](img/jsonb1.png)
+![jsonb2](img/jsonb2.png)
 
+Como referencia visualizar el estado del proyecto en el commit `1b38184`.
+
+### JSON-P Patch
+
+JSON-P es una API que existe desde versiones anteriores de JavaEE 8 y fue actualizada con la inclusión de soporte a [JSON Pointer](https://tools.ietf.org/html/rfc6901) y [JSON Patch](http://jsonpatch.com/), para permitir manipulaciones de JSON directamente sobre el texto y sin realizar Marshalling hacia un objeto en Java.
+
+Para probar esta caracteristica agregaremos dos nuevos métodos a nuestro `MovieEndpoint`.
+
+```java
+@GET
+@Path("/with-actors/{id:[0-9][0-9]*}")
+public Response findWithActors(@PathParam("id") final Long id) {
+    Movie movie = movieDao.findById(id);
+    if (movie == null) {
+        return Response.status(Status.NOT_FOUND).build();
+    }
+
+    return Response.ok(createMovieWithActor(movie)).build();
+}
+
+private String createMovieWithActor(Movie movie){
+
+    //To json
+    String result = JsonbBuilder.create().toJson(movie);
+
+    JsonReader jsonReader = Json.createReader(new StringReader(result));
+    JsonObject jobj = jsonReader.readObject();
+
+    //Json-p Patch
+    jobj = Json.createPatchBuilder()
+        .add("/actores", "mafalda")
+        .build()
+        .apply(jobj);
+
+    return jobj.toString();
+}
+```
+
+Notese que mediante el metodo `createMovieWithActor` realizamos 1- Marshalling manual, 2- Unmarshalling hacia JsonObject y 3- Agregamos una nueva propiedad denominada actores, manipulando exclusivamente el objeto JSON. Posteriomente exponemos este método con una nueva ruta mediante `findWithActors`
+
+![jsonp1](img/jsonp1.png)
+
+Como referencia visualizar el estado del proyecto en el commit `90b7de2`.
+
+### JAX-RS Reactivo
+Uno de los mayores cambios entre la publicación de JavaEE 7 y JavaEE 8 fue la popularización del manifiesto y consecuentemente de los clientes http reactivos, cambió que fue adoptado pora JAX-RS.
+
+Para probar esta caracteristica, crearemos un nuevo DAO que se comunicara via REST para obtener los detalles de una pelicula basandose unicamente en su código de IMDB. Para este ejercicio se requiere obtener una API key en [OMDB](http://www.omdbapi.com/).
+
+```java
+@Stateless
+public class OmdbMovieDao {
+
+    private static final String OMDB_KEY = "reemplazarporunallavefuncionalaca";
+    private static final String OMDB_BASE_URL = "http://www.omdbapi.com/?apikey=" + OMDB_KEY;
+
+    public CompletionStage<String> findActors(String imdb){
+
+        String requestUrl = OMDB_BASE_URL + "&i=" + imdb;
+
+        //Intentar buscar los detalles
+        //Parametrizamos el cliente
+        WebTarget target = ClientBuilder.newBuilder()
+                .connectTimeout(2, TimeUnit.SECONDS)
+                .readTimeout(2, TimeUnit.SECONDS)
+                .build()
+                .target(requestUrl);
+
+        CompletionStage<String> future = target.request()
+                .accept(MediaType.APPLICATION_JSON)
+                .rx()
+                .get(String.class);
+        return future;
+    }
+}
+```
+
+A partir del DAO podemos observar que al construir nuestra petición utilizando .rx() y .get obtenemos como resultado un objeto de tipo CompletionStage. CompletionStage fue una de las nuevas APIs(y de hecho la unica reactiva) integrada en Java 8, por lo que JavaEE 8 la adoptá como su mecanismo para la evaluación de CompletableFutures y combinación de resultados entre distintos origenes.
+
+Al estar listo nuestro nuevo DAO, podemos inyectarlo en `MovieEndpoint` e integrarlo en el proceso de patching, para combinar los resultados almacenados en la base de datos, con los datos obtenidos desde OMDB de forma reactiva.
+
+```java
+@EJB
+OmdbMovieDao omdbDao;
+
+//Otros metodos
+
+@GET
+@Path("/with-actors/{id:[0-9][0-9]*}")
+public void findWithActors(@PathParam("id") final Long id, @Suspended AsyncResponse response) {
+
+    Movie movie = movieDao.findById(id);
+
+    if (movie == null) {
+        response.resume(new NotFoundException());
+    }
+    String movieString = JsonbBuilder.create().toJson(movie);
+
+    CompletionStage<String> omdbInfo = omdbDao.findActors(movie.getImdb());
+
+    omdbInfo.thenApply((omdbResponse) -> {
+
+        JsonReader orgMovieJsonReader = Json.createReader(new StringReader(movieString));
+        JsonObject orgMovie = orgMovieJsonReader.readObject();
+
+        JsonReader omdbJsonReader = Json.createReader(new StringReader(omdbResponse));
+        JsonObject omdbMovie = omdbJsonReader.readObject();
+
+        //Json-p Patch
+        orgMovie = Json.createPatchBuilder()
+            .add("/actores", omdbMovie.getString("Actors", "mafalda"))
+            .build()
+            .apply(orgMovie);
+
+        return orgMovie.toString();
+    })
+    .thenAccept(response::resume);
+}
+```
+
+La respuesta debera ser transparente al usuario, dependiendo de la velocidad de la conexión se observara que la respuesta sera generada solo al completar la petición hacia OMDB, "reaccionando" a este evento y parchando el JSON original con la nueva información.
+
+![jaxrs](img/jaxrs.png)
+
+### CDI 2.0 (Async events)
+
+Una de las caracteristicas bastante utilizadas mediante CDI es la creación de eventos y listener, mediante los cuales un componente puede disparar un evento y podemos declarar un método que reacciona al evento. Para probar esta caracteristica necesitaremos:
+
+#### Agregar soporte a CDI
+
+Podemos utilizar el asistente de netbeans para generar un archivo `beans.xml`, el cual activara CDI en todo el proyecto:
+
+![beans1](img/beans1.png)
+
+![beans2](img/beans2.png)
+
+#### Agregar un bean que reaccione a los eventos y el evento
+
+La primera pieza de nuestro evento sera un observador con CDI, el metodo solo genera información en la salida estandard *despues* de una pausa de 5 segundos, a pesar que nuestró evento sera reactivo, el mismo aun es de tipo blocking por lo que se ejecutara en el mismo thread que dispare el evento.
+
+```java
+@Named
+public class OmdbMovieObserver {
+    public void logMovieLookup(@Observes String imdb){
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(OmdbMovieObserver.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Buscando " + imdb);
+    }
+}
+```
+
+Luego, dentro de `OmdbDao` agregaremos el evento el cual en este momento aun es de tipo blocking
+
+```java
+@Inject
+Event<String> lookupMovie;
+
+public CompletionStage<String> findActors(String imdb){
+
+    lookupMovie.fire(imdb);
+    //....
+```
+
+Al probar nuevamente el API notaremos que el evento se queda bloqueado despues de emitir el evento, por lo que respuesta tardara como mínimo 10 segundos más el tiempo en bajar a la base de datos y consultoar a OMDB.
+
+Como referencia visualizar el estado del proyecto en el commit `96e4f18`.
+
+#### Agregar un observador asíncrono
+
+Para corregir la situación anterior, cambiaremos el observador hacia un observador asíncrono
+
+`public void logMovieLookup(@ObservesAsync String imdb)`
+
+Y tambien la generación del evento para que el mismo sea asíncrono y utilice su propio thread. Al estar en un application server, tambien necesitamos de un `ManagedExecutorService` para la gestión del nuevo thread donde se ejecuta el evento en CDI. Utilizaremos el disponible por defecto en Payara.
+
+```java
+public class OmdbMovieDao {
+
+    @Inject
+    Event<String> lookupMovie;
+
+    @Resource
+    ManagedExecutorService threadPool;
+
+    public CompletionStage<String> findActors(String imdb){
+
+        lookupMovie.fireAsync(imdb, NotificationOptions.ofExecutor(threadPool));
+
+    //....
+```
+
+Al probar nuevamente nuestra API notaremos que el evento CDI se ejecutó en backgroun y no bloquea más la comunicación.
+
+![asynccdi](img/asynccdi.png)
+
+Como referencia visualizar el estado del proyecto en el commit `2d722bd`.
