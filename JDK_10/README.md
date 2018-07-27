@@ -8,7 +8,7 @@ ___
 
 ####   Ver la solución disminuye la diversión y el reto de tratar de llegar a una solución . 
 
-[Volver al master (exercises) branch](blob/master/java10/README.md)
+[Volver al master (exercises) branch](../../master/java10/README.md)
 
 ___
 
