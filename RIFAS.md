@@ -19,7 +19,7 @@ Cuentas de los JUGs
 
 
 
-- Cali: https://twitter.com/@CLOJUG 
+- Cali: https://twitter.com/CLOJUG (@CLOJUG)
 
 - Guatemala: https://twitter.com/guatejug (@guatejug )
 
