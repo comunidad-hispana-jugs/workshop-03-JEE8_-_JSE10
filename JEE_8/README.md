@@ -54,7 +54,6 @@ Al finalizar NetBean solicitara el reinicio del IDE.
 
 Al reiniciar el IDE, debemos movilizarnos hacia la pestaña Services, específicamente en el apartado Servers, y mediante click derecho seleccionaremos la opción "Add Server".
 
-![pn0](img/pn0.png)
 
 Luego, debemos elegir Payara Server para tener soporte a la ultima versión de Payara.
 
@@ -70,11 +69,15 @@ Utilizaremos los valores predeterminados para dominio
 
 Al finalizar, estaremos listos para iniciar Payara por primera vez, si la instalación es satisfactoria podemos dirigirnos hacia la url http://localhost:8080 donde Payara debe estar en ejecución:
 
+![pn0](img/pn0.png)
+
 ![pn4](img/pn4.png)
 
 ## Creación y despliegue de una aplicación con JavaEE 7
 
 Para la siguiente demostración crearemos una aplicación web utilizando Netbeans IDE 8.2 de acuerdo al siguiente esquema:
+
+![arch](img/arch.png)
 
 El objetivo de la aplicación es la elaboración de un backend para aplicaciones SPA (para fines demostrativos el [siguiente repositorio contiene una aplicación en AngularJS](https://github.com/tuxtor/jmovies-spa)), con la cual podremos crear un listado de películas favoritas, para agregar, modificar y eliminar películas (CRUD).
 
@@ -114,9 +117,9 @@ En esta ocasión utilizaremos una entidad en Java que representa una tabla relac
 
 Como parte del estandard de Java EE, los servidores de aplicaciones deben implementar una base de datos relacional en memoria que permita elaborar pruebas, demostraciones y servir de soporte para procesos de integración continua. Sobre esta capa utilizaremos tres APIs fundamentales en las aplicaciones de JavaEE:
 
-* JPA: ORM y mecanismo de mapeo desde bases de datos relacionales hacia el paradigma orientado a objetos
-* EJB: Para la creación de componentes con una arquitectura orientada a servicios, incluyendo transaccionalidad, manejo de ciclo de vida e inyección de dependencias
-* Bean Validation: Validaciones declarativas para la integridad de nuestra aplicación
+* **JPA:** ORM y mecanismo de mapeo desde bases de datos relacionales hacia el paradigma orientado a objetos
+* **EJB:** Para la creación de componentes con una arquitectura orientada a servicios, incluyendo transaccionalidad, manejo de ciclo de vida e inyección de dependencias
+* **Bean Validation:** Validaciones declarativas para la integridad de nuestra aplicación
 
 #### Creando la entidad de persistencia
 
