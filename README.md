@@ -48,8 +48,9 @@ https://www.youtube.com/watch?v=-LWM-xr6LP0
 
 #### Ejercicios JDK 10
 
-[JDK_10/README.md](JDK_10/README.md) 
-Presentación: https://www.slideshare.net/HillmerC/java-10-hack-day-108227173
+  [JDK_10/README.md](JDK_10/README.md) 
+
+  Presentación: https://www.slideshare.net/HillmerC/java-10-hack-day-108227173
 
 
 
