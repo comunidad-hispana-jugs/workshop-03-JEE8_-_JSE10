@@ -58,4 +58,6 @@ https://www.youtube.com/watch?v=-LWM-xr6LP0
 
 #### Ejercicios Java EE 8
 
-[JEE_8/README.md](JEE_8/README.md) 
+  [JEE_8/README.md](JEE_8/README.md)
+
+  Presentación https://www.slideshare.net/tuxtor/introduccin-a-jakartaee-8
